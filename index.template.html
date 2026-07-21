@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>성공적인 직업생활 빈칸퀴즈</title>
+<title>퀴즈 사이트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="./docx.js"></script>
@@ -558,7 +558,6 @@ footer{
 <div id="homeScreen">
   <div class="home-wrap">
     <div class="home-hd">
-      <div class="issue">성공적인 직업생활</div>
       <h1>퀴즈 선택</h1>
       <p>시험을 선택하세요</p>
     </div>
@@ -686,8 +685,8 @@ footer{
         <div class="field"><label>설명 (선택)</label><input id="ef-set-desc" placeholder="예) 2026년 6월 직업생활 모의고사"></div>
         <hr style="border:none;border-top:1px dashed var(--paper-line);margin:14px 0">
         <div style="font-size:11px;color:var(--muted);margin-bottom:10px;letter-spacing:.04em">퀴즈 페이지 표시 정보</div>
-        <div class="field"><label>대표 제목</label><input id="ef-set-title" placeholder="예) 성공적인 직업생활"></div>
-        <div class="field"><label>부제</label><input id="ef-set-sub" placeholder="예) — 빈칸을 채워 개정 내용을 확인하십시오 —"></div>
+        <div class="field"><label>대표 제목</label><input id="ef-set-title" placeholder="예) 수학 / 영어 문법 / 한국사"></div>
+        <div class="field"><label>부제</label><input id="ef-set-sub" placeholder="예) — 빈칸을 채워보세요 —"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div class="field"><label>발행번호</label><input id="ef-set-issue" placeholder="예) 제 2026-07 호"></div>
           <div class="field"><label>기준일</label><input id="ef-set-date" placeholder="예) 2026.07.01"></div>
@@ -883,7 +882,7 @@ const SB_KEY  = 'YOUR_SUPABASE_ANON_KEY'; // Supabase 프로젝트 Settings > AP
 const sb      = supabase.createClient(SB_URL, SB_KEY);
 
 /* ── 상수 ───────────────────────────────────────────── */
-const STORAGE_KEY   = 'sjl_quiz_v2';
+const STORAGE_KEY   = 'quiz_app_v1';
 const DEFAULT_PW    = 'YOUR_ADMIN_PASSWORD'; // 관리자 초기 비밀번호
 const CHOICE_LABELS = ['①','②','③','④','⑤'];
 const MULTI_DEFAULT_LABELS = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ'];
@@ -901,11 +900,11 @@ function defaultState() {
   return {
     pw: DEFAULT_PW,
     config: {
-      title:  '성공적인 직업생활',
-      sub:    '— 빈칸을 채워 개정 내용을 확인하십시오 —',
-      issue:  '제 2026-07 호',
-      date:   '2026.07.01',
-      footer: '이 자료는 학습 목적으로 제작되었습니다.'
+      title:  '',
+      sub:    '',
+      issue:  '',
+      date:   '',
+      footer: ''
     },
     articles: []
   };
@@ -2335,7 +2334,7 @@ function _fillSetForm(s){
   const cfg = s?.config || {};
   document.getElementById('ef-set-name').value  = s?.name||'';
   document.getElementById('ef-set-desc').value  = s?.description||'';
-  document.getElementById('ef-set-title').value = cfg.title||'성공적인 직업생활';
+  document.getElementById('ef-set-title').value = cfg.title||'';
   document.getElementById('ef-set-sub').value   = cfg.sub||'';
   document.getElementById('ef-set-issue').value = cfg.issue||'';
   document.getElementById('ef-set-date').value  = cfg.date||'';
